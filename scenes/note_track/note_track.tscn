@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ovhtk8qe3edc"]
+
+[ext_resource type="Script" path="res://scenes/note_track/note_track.gd" id="1_bp0cp"]
+[ext_resource type="PackedScene" uid="uid://md01pcsfdtpd" path="res://scenes/notes/falling_note.tscn" id="2_v3d4v"]
+
+[node name="NoteTrack" type="Node2D"]
+script = ExtResource("1_bp0cp")
+falling_note_scene = ExtResource("2_v3d4v")
+
+[node name="NoteSpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="NoteSpawnTimer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwyxhiuq2tjtw"]
+
+[ext_resource type="PackedScene" uid="uid://c0snx0b6qjbmv" path="res://scenes/key_listener/key_listener.tscn" id="1_pmclr"]
+[ext_resource type="PackedScene" uid="uid://ovhtk8qe3edc" path="res://scenes/note_track/note_track.tscn" id="2_sxqje"]
+
+[node name="GameScene" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-10.8613, -61.5)
+scale = Vector2(1.05465, 1)
+points = PackedVector2Array(255.532, 480, 741, 480)
+width = 2.5
+
+[node name="KeyListeners" type="Node" parent="."]
+
+[node name="KeyListenerLeft" parent="KeyListeners" node_paths=PackedStringArray("note_track") instance=ExtResource("1_pmclr")]
+position = Vector2(322.637, 418.5)
+key = 3
+note_track = NodePath("../../NoteTracks/NoteTrackLeft")
+
+[node name="KeyListenerUp" parent="KeyListeners" node_paths=PackedStringArray("note_track") instance=ExtResource("1_pmclr")]
+position = Vector2(450.637, 418.5)
+note_track = NodePath("../../NoteTracks/NoteTrackUp")
+
+[node name="KeyListenerDown" parent="KeyListeners" node_paths=PackedStringArray("note_track") instance=ExtResource("1_pmclr")]
+position = Vector2(578.637, 418.5)
+key = 1
+note_track = NodePath("../../NoteTracks/NoteTrackDown")
+
+[node name="KeyListenerRight" parent="KeyListeners" node_paths=PackedStringArray("note_track") instance=ExtResource("1_pmclr")]
+position = Vector2(706.637, 418.5)
+key = 2
+note_track = NodePath("../../NoteTracks/NoteTrackRight")
+
+[node name="NoteTracks" type="Node" parent="."]
+
+[node name="NoteTrackLeft" parent="NoteTracks" instance=ExtResource("2_sxqje")]
+position = Vector2(320, 0)
+
+[node name="NoteTrackUp" parent="NoteTracks" instance=ExtResource("2_sxqje")]
+position = Vector2(448, 0)
+
+[node name="NoteTrackDown" parent="NoteTracks" instance=ExtResource("2_sxqje")]
+position = Vector2(576, 0)
+
+[node name="NoteTrackRight" parent="NoteTracks" instance=ExtResource("2_sxqje")]
+position = Vector2(704, 0)

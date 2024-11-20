@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0snx0b6qjbmv"]
+
+[ext_resource type="Script" path="res://scenes/key_listener/key_listener.gd" id="1_hwrbi"]
+[ext_resource type="Texture2D" uid="uid://cc01gqx14e1r4" path="res://icon.svg" id="2_xayvm"]
+
+[node name="KeyListener" type="Node2D"]
+script = ExtResource("1_hwrbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.1)
+texture = ExtResource("2_xayvm")

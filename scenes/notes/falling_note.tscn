@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://md01pcsfdtpd"]
+
+[ext_resource type="Script" path="res://scenes/notes/falling_note.gd" id="1_ej12y"]
+[ext_resource type="Texture2D" uid="uid://cc01gqx14e1r4" path="res://icon.svg" id="1_heod7"]
+
+[node name="FallingNote" type="Node2D"]
+script = ExtResource("1_ej12y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_heod7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.90735e-06, -48)
+scale = Vector2(3.2, 1.6)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
