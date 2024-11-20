@@ -1,9 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwyxhiuq2tjtw"]
+[gd_scene load_steps=17 format=3 uid="uid://cwyxhiuq2tjtw"]
 
+[ext_resource type="Script" path="res://scenes/game_scene/game_scene.gd" id="1_2clx4"]
+[ext_resource type="PackedScene" uid="uid://3ety7cxjb5x1" path="res://scenes/falling_note_feeder/falling_note_feeder.tscn" id="1_luole"]
 [ext_resource type="PackedScene" uid="uid://c0snx0b6qjbmv" path="res://scenes/key_listener/key_listener.tscn" id="1_pmclr"]
+[ext_resource type="Script" path="res://resources/note_map_resource.gd" id="2_507js"]
 [ext_resource type="PackedScene" uid="uid://ovhtk8qe3edc" path="res://scenes/note_track/note_track.tscn" id="2_sxqje"]
+[ext_resource type="PackedScene" uid="uid://bntj3wyv7yjbe" path="res://scenes/game_ui/game_ui.tscn" id="3_f6xci"]
+
+[sub_resource type="Resource" id="Resource_br2na"]
+script = ExtResource("2_507js")
+note_type_left = 0
+note_type_up = 1
+note_type_down = 0
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_rhxoo"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 0
+note_type_down = 1
+note_type_right = 0
+
+[sub_resource type="Resource" id="Resource_hx2tq"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 1
+note_type_down = 1
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_q4fuj"]
+script = ExtResource("2_507js")
+note_type_left = 0
+note_type_up = 0
+note_type_down = 0
+note_type_right = 0
+
+[sub_resource type="Resource" id="Resource_wqjou"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 1
+note_type_down = 1
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_2g54t"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 1
+note_type_down = 1
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_o55a2"]
+script = ExtResource("2_507js")
+note_type_left = 0
+note_type_up = 1
+note_type_down = 1
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_7s8ec"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 0
+note_type_down = 1
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_3wexe"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 1
+note_type_down = 0
+note_type_right = 1
+
+[sub_resource type="Resource" id="Resource_n8kon"]
+script = ExtResource("2_507js")
+note_type_left = 1
+note_type_up = 1
+note_type_down = 1
+note_type_right = 0
 
 [node name="GameScene" type="Node"]
+script = ExtResource("1_2clx4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -13,6 +88,11 @@ position = Vector2(-10.8613, -61.5)
 scale = Vector2(1.05465, 1)
 points = PackedVector2Array(255.532, 480, 741, 480)
 width = 2.5
+
+[node name="FallingNoteFeeder" parent="." node_paths=PackedStringArray("note_track_array") instance=ExtResource("1_luole")]
+unique_name_in_owner = true
+note_track_array = [NodePath("../NoteTracks/NoteTrackLeft"), NodePath("../NoteTracks/NoteTrackUp"), NodePath("../NoteTracks/NoteTrackDown"), NodePath("../NoteTracks/NoteTrackRight")]
+note_map_resource_array = Array[ExtResource("2_507js")]([SubResource("Resource_br2na"), SubResource("Resource_rhxoo"), SubResource("Resource_hx2tq"), SubResource("Resource_q4fuj"), SubResource("Resource_wqjou"), SubResource("Resource_2g54t"), SubResource("Resource_o55a2"), SubResource("Resource_7s8ec"), SubResource("Resource_3wexe"), SubResource("Resource_n8kon")])
 
 [node name="KeyListeners" type="Node" parent="."]
 
@@ -48,3 +128,7 @@ position = Vector2(576, 0)
 
 [node name="NoteTrackRight" parent="NoteTracks" instance=ExtResource("2_sxqje")]
 position = Vector2(704, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_f6xci")]

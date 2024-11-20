@@ -3,14 +3,15 @@ class_name NoteTrack
 
 @export var falling_note_scene: PackedScene
 
-var falling_note_queue: Array[String] = ["Note", "Null", "Note", "Note"]
+var falling_note_queue: Array[String] = []
 var falling_note_active_array: Array[FallingNote]
 
 @onready var note_spawn_timer: Timer = %NoteSpawnTimer
 
 func _ready() -> void:
-	add_falling_note("Null")
-	add_falling_note("Note")
+	pass
+
+func start_note_track() -> void:
 	if falling_note_queue.size():
 		note_spawn_timer.start(0.25)
 

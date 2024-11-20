@@ -16,7 +16,7 @@ enum InputKey {
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 
-var input_array: Array[String] = ["ui_up", "ui_down", "ui_right", "ui_left"]
+var input_array: Array[String] = ["arrow_up", "arrow_down", "arrow_right", "arrow_left"]
 
 func _ready() -> void:
 	sprite_2d.modulate.a = 0.5
@@ -46,6 +46,8 @@ func get_current_falling_note() -> FallingNote:
 		var is_passed: bool = (falling_note_distance + ok_threshold) < 0
 		
 		if is_passed:
+			print("Missed")
+			SignalBus.trigger_combo_label.emit("Missed")
 			var popped_falling_note: FallingNote = note_track.falling_note_active_array.pop_front()
 			if popped_falling_note:
 				popped_falling_note.queue_free()
@@ -61,12 +63,15 @@ func register_hit(current_falling_note: FallingNote) -> void:
 	if falling_note_distance <= perfect_threshold:
 		print("Perfect")
 		erase_current_falling_note()
+		SignalBus.trigger_combo_label.emit("Perfect")
 	elif falling_note_distance <= great_threshold:
 		print("Great")
 		erase_current_falling_note()
+		SignalBus.trigger_combo_label.emit("Great")
 	elif falling_note_distance <= ok_threshold:
 		print("Ok")
 		erase_current_falling_note()
+		SignalBus.trigger_combo_label.emit("Ok")
 	else:
 		print("Ignore")
 

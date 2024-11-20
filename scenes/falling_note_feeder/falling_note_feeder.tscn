@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ety7cxjb5x1"]
+
+[ext_resource type="Script" path="res://scenes/falling_note_feeder/falling_note_feeder.gd" id="1_a2qmf"]
+
+[node name="FallingNoteFeeder" type="Node2D"]
+script = ExtResource("1_a2qmf")
